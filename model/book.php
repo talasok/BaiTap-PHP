@@ -68,15 +68,6 @@ class Book
         }
         return $lsBook;
     }
-    static function getSearchID($id){
-        $arrData = file("data/book.txt");
-        foreach ($arrData as $key => $value) {
-            if(strlen(strstr($arrItem[0],$id)){
-                return new Book($arrItem[0],$arrItem[1],$arrItem[2],$arrItem[3],$arrItem[4]);
-            }
-        }
-        return null;
-    }
     static function addToFile($content)
     {
         $myfile = fopen("data/book.txt", "a") or die("Unable to open file!");

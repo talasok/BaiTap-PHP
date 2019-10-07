@@ -23,7 +23,30 @@
 <!-- Demo scripts for this page-->
 <script src="js/demo/datatables-demo.js"></script>
 <script src="js/demo/chart-area-demo.js"></script>
+<script>
+    function func(a){
+        var eId = a.getAttribute('eid');
+        var eTitle = a.getAttribute('etitle');
+        var ePrice = a.getAttribute('eprice');
+        var eAuthor = a.getAttribute('eauthor');
+        var eYear = a.getAttribute('eyear');
+        console.log(eId);
+        
 
+        var id = document.getElementById("id1");
+        var title = document.getElementById("title1");
+        var price = document.getElementById("price1");
+        var author = document.getElementById("author1");
+        var year = document.getElementById("year1");
+        console.log(id);
+        
+        id.value = eId;
+        title.value = eTitle;
+        price.value = ePrice;
+        author.value = eAuthor;
+        year.value = eYear;
+    }
+</script>
 </body>
 
 </html>

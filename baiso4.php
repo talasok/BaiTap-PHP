@@ -4,7 +4,7 @@
     #Code bài số 4
     include_once("model/book.php");
     // $book = new Book(50,"OOP in PHP","ndungit",2019);
-   
+    
     $keyWord = null;
     if(isset($_REQUEST["search"])){
         $keyWord =$_REQUEST["search"];
@@ -126,26 +126,26 @@
                                 <div class="form-group d-flex">
                                     <label class="pt-1 col-md-2 control-label" for="Title">ID</label>
                                     <div class="col-md-10">
-                                        <input  id="id" name="id" type="text" placeholder="ID" class="form-control input-md" value="">
+                                        <input  id="id1" name="id" type="text" placeholder="222" class="form-control input-md" value="">
                                     </div>
                                 </div>
                                 <div class="form-group d-flex">
                                     <label class="pt-1 col-md-2 control-label" for="Title">Title</label>
                                     <div class="col-md-10">
-                                        <input id="title" name="title" type="text" value="" placeholder="Title" class="form-control input-md">
+                                        <input id="title1" name="title" type="text" value="" placeholder="Title" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group d-flex">
                                     <label class="pt-1 col-md-2 control-label" for="Title">Price</label>
                                     <div class="col-md-10">
-                                        <input id="price" name="price" type="text" value="" placeholder="Price" class="form-control input-md">
+                                        <input id="price1" name="price" type="text" value="" placeholder="Price" class="form-control input-md">
                                     </div>
                                 </div>
                                 <!-- Select Basic -->
                                 <div class="form-group d-flex">
                                     <label class="pt-1 col-md-2 control-label" for="Year">Year</label>
                                     <div class="col-md-10">
-                                        <input type="text" id="year" name="year" value="" class="form-control input-md"> 
+                                        <input type="text" id="year1" name="year" value="" class="form-control input-md"> 
                                     </div>
                                 </div>
 
@@ -153,7 +153,7 @@
                                 <div class="form-group d-flex">
                                     <label class="pt-1 col-md-2 control-label" for="Author">Author</label>
                                     <div class="col-md-10">
-                                        <input id="author" name="author" value="" type="text" placeholder="Author" class="form-control input-md">
+                                        <input id="author1" name="author" value="" type="text" placeholder="Author" class="form-control input-md">
                                     </div>
                                 </div>
                             </fieldset>
@@ -191,7 +191,10 @@
                     <td colspan="2"><?php echo $value->price?></td>
                     <td colspan="2"><?php echo $value->author ?></td>
                     <td colspan="2"> <?php echo $value->year ?></td> 
-                    <td> <button data-toggle="modal" data-target="#editModal" class="btn btn-outline-warning" name="BtnEdit"><i class="fas fa-edit"></i>Sửa </button>
+                    <td> <button onclick="func(this)" id="editBook" data-toggle="modal" data-target="#editModal" class="btn btn-outline-warning" name="BtnEdit"
+                    eid="<?php echo $value->id ?>" etitle="<?php echo $value->title ?>" eauthor="<?php echo $value->author ?>" eyear="<?php echo $value->year ?>" eprice="<?php echo $value->price ?>"
+                    >
+                    <i class="fas fa-edit"></i>Sửa </button>
                     <a href="baiso4.php?action=xoa&&id=<?php echo $key ?>" type="submit" class="btn btn-outline-danger" nanme="deleteBook"><i class="fas fa-trash-alt"></i>Xóa </a>
                     </td>
                </tr>

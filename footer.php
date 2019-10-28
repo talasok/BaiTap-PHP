@@ -25,14 +25,13 @@
 <script src="js/demo/chart-area-demo.js"></script>
 <script>
     function func(a){
+
         var eId = a.getAttribute('eid');
         var eTitle = a.getAttribute('etitle');
         var ePrice = a.getAttribute('eprice');
         var eAuthor = a.getAttribute('eauthor');
         var eYear = a.getAttribute('eyear');
-        console.log(eId);
-        
-
+        console.log(eId);       
         var id = document.getElementById("id1");
         var title = document.getElementById("title1");
         var price = document.getElementById("price1");

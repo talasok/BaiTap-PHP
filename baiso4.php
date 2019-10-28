@@ -15,8 +15,15 @@
         $price = $_REQUEST["price"];
         $author = $_REQUEST["author"];
         $year = $_REQUEST["year"];
-        $content = $id . "#" . $title . "#" . $price . "#" . $author . "#" . $year;
-        Book::addToFile($content);
+        $content =  array();
+        array_push($content,$title);
+        array_push($content,$price);
+        array_push($content,$author);
+        array_push($content,$year);
+        //array_push($content,$title);
+        //$book = new Book("",$title,$price,$author,$year);
+        //$content = $id . "#" . $title . "#" . $price . "#" . $author . "#" . $year;
+        Book::addToDB($content);
         
     }
     if (isset($_REQUEST["editBook"])) {
@@ -25,18 +32,26 @@
         $price = $_REQUEST["price"];
         $author= $_REQUEST["author"];
         $year  = $_REQUEST["year"];
-        $book = new Book($id,$price,$title,$author,$year);
-        Book::editItem($book,Book::getListFromFile());
+        $content =  array();
+        array_push($content,$id);
+        array_push($content,$title);
+        array_push($content,$price);
+        array_push($content,$author);
+        array_push($content,$year);
+        Book::editDB($content);
     }
     if(isset($_REQUEST["action"])){
         if(strcmp($_REQUEST["action"],"xoa")==0){
-            Book::delete(Book::getListFromFile(),$_REQUEST["id"]);
+            //Book::delete(Book::getListFromFile(),$_REQUEST["id"]);
+            Book::deleteDB($_REQUEST["id"]);
         }
     } 
     
     //$ls=Book::getList(); //Mockdata
     $sl=Book::getListFromFile();
     $lsFromFile=Book::getSearch($keyWord);
+    $lsFromDB= Book::getListFromDB();
+    //var_dump($lsFromDB);
     ?>
 <div class="container" >
     <div>
@@ -183,10 +198,10 @@
                <?php 
                //độ dài list ls
                // count($ls)
-               foreach ($lsFromFile as $key => $value) {
+               foreach ($lsFromDB as $key => $value) {
                 ?>
                <tr>
-                    <th colspan="1"><?php echo $key ?></th>
+                    <th colspan="1"><?php echo $value->id ?></th>
                     <td colspan="2"><?php echo $value->title ?></td>
                     <td colspan="2"><?php echo $value->price?></td>
                     <td colspan="2"><?php echo $value->author ?></td>
@@ -195,7 +210,7 @@
                     eid="<?php echo $value->id ?>" etitle="<?php echo $value->title ?>" eauthor="<?php echo $value->author ?>" eyear="<?php echo $value->year ?>" eprice="<?php echo $value->price ?>"
                     >
                     <i class="fas fa-edit"></i>Sửa </button>
-                    <a href="baiso4.php?action=xoa&&id=<?php echo $key ?>" type="submit" class="btn btn-outline-danger" nanme="deleteBook"><i class="fas fa-trash-alt"></i>Xóa </a>
+                    <a href="baiso4.php?action=xoa&&id=<?php echo $value->id ?>" type="submit" class="btn btn-outline-danger" nanme="deleteBook"><i class="fas fa-trash-alt"></i>Xóa </a>
                     </td>
                </tr>
                <?php }?>
